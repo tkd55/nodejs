@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // JavaScriptの関数
+    // 第１級データ型（第１級関数）
+    // - 関数を関数の引数として渡せる
+    // - 関数の戻り値として返せる
+    // - 配列やオブジェクトなどの複合型の中に埋め込める
+    // - 変数に格納できる
+    
+    // 変数に格納する
+    var funcA = function() {
+        console.log('funcA');
+    };
+    
+    console.log(funcA);
+    funcA();
+    
+    // 配列に格納もできる
+    var funcB = [
+        function(){
+            console.log('funcB その１');
+        },
+        function(){
+            console.log('funcB その２');
+        }
+    ];
+    
+    funcB[0]();
+    funcB[1]();
+    
+    // オブジェクトに格納もできる
+    var funcC = {
+        method: function(){
+            console.log('funcC');
+        }
+    };
+    
+    funcC.method();
+
+    // var viewController = {
+    //     init : function(){
+    //         
+    //     },
+    //     render: function(){
+    //         
+    //     },
+    //     getXXX: function(){
+    //         
+    //     }
+    // };
+    
+    
+    var argFunc = function(){
+        console.log('引数で渡した関数');
+    };
+    
+    var funcD = function(callback){
+        setTimeout(function(){
+            callback();
+        }, 1000);
+    };
+    
+    // 引数に関数を設定
+    funcD(argFunc);
+    
+    var funcE = function(){
+        var returnFunc = function(){
+            console.log('戻り値の関数');
+        };
+        
+        return returnFunc;
+    };
+    
+    // 戻り値で関数を受け取る
+    var ret = funcE();
+    ret();
+    
+    
+    
+    </script>
+</body>
+</html>

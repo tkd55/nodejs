@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form class="" action="/thunks" method="post">
+        <p>
+            りんごを
+            <span><%= apple.num %>個で</span>
+            <span><%= apple.price %>円</span>
+        </p>
+        <p>
+            ばななを
+            <span><%= banana.num %>個で</span>
+            <span><%= banana.price %>円</span>
+        </p>
+        <p>
+            みかんを
+            <span><%= orange.num %>個で</span>
+            <span><%= orange.price %>円</span>
+        </p>
+        <div class="">
+            <p>
+                合計: <%= total %>円
+            </p>
+        </div>
+        <input type="submit" name="name" value="購入">
+    </form>
+    <a href="/" target="">買い物を続ける</a>
+</body>
+</html>

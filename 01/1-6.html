@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <button type="button" name="button" id="send-btn">送信</button>
+    <script   src="https://code.jquery.com/jquery-3.1.0.js"   integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+    // $('#send-btn').on('click', function(){
+    //
+    // });
+    document.getElementById('send-btn').addEventListener('click', () => {
+        // 通信処理
+        $.ajax({
+            url: 'http://tkd55.net:8888/nocross',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                name: 'みそだ'
+            }
+        })
+        .done(function(res){
+            // 通信成功時
+            console.log(res);
+        })
+        .fail(function(){
+            // 通信失敗時
+            console.log('失敗');
+        });
+    }, false);
+    </script>
+
+
+
+</body>
+</html>

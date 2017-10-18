@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+// ビルドインオブジェクト
+
+// 日付
+var today = new Date();
+// 年
+var y = today.getFullYear();
+// 月
+var m = today.getMonth() + 1;
+// 日
+var d = today.getDate();
+// 時
+var h = today.getHours();
+// 分
+var min = today.getMinutes();
+// 秒
+var sec = today.getSeconds();
+// ミリ秒
+var ms = today.getMilliseconds();
+
+// 曜日
+var day = today.getDay();    // 0: 日曜, 1: 月曜, 〜 , 6: 土曜
+var week = ['日', '月', '火', '水', '木', '金', '土'];
+console.log(week[day]);
+
+var now = y + '/' + m + '/' + d + ' ' + h + ':' + m + ':' + sec + '.' + ms;
+console.log(now);
+
+// タイマー
+// 2秒後に「こんにちは」を表示する
+setTimeout(() => {
+    console.log('こんにちは');
+}, 2000);
+
+var counter = 0;
+// 1秒後から1秒間隔で表示される
+setInterval(() => {
+    counter++;
+    console.log(counter + '秒経過しました');
+}, 1000);
+
+</script>
+
+</body>
+</html>

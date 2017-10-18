@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <form class="" action="/confirm" method="POST">
+          <p>
+              りんご : 100円
+              <input type="text" name="apple" size="2" value="<%= apple.num %>">
+              <span>個</span>
+          </p>
+          <p>
+              ばなな : 300円
+              <input type="text" name="banana" size="2" value="<%= banana.num %>">
+              <span>個</span>
+          </p>
+          <p>
+              みかん : 200円
+              <input type="text" name="orange" size="2" value="<%= orange.num %>">
+              <span>個</span>
+          </p>
+          <input type="submit" name="name" value="カートの確認">
+      </form>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<!-- 「socket.io.js」を通信先のサーバから読み込む -->
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/javascripts/client.js"></script>
+	</head>
+		<body>
+		<h1><%= title %></h1>
+		<div id='user-area'>
+			名前:<input type="text" name="name" id="user-name">
+			<input type="button" value="登録" id="name-send">
+		</div>
+		<br>
+		
+		<input id='disBtn' type="button" value="切断する"><br>
+		
+		<br>
+		<div id="problem-area" style="display:none;">
+			<input type="text" id="message" value="">
+			<input id='sendBtn' type="button" value="回答">
+			<div id="receiveMsg"></div>
+		</div>
+	</body>
+</html>

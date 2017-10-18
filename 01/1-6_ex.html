@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Ajax演習</h1>
+    アクセス先 : http://tkd55.net:8888/ex <br>
+    リクエストメソッド : GET <br>
+    パラメータキー : name <br>
+    パラメータ値 : misoda / kotori / zen <br>
+    <br>
+    各パラメータで取得したものを表示してください。<br>
+    <br>
+    <input type="text" id="input-text">
+    <button id="sendEx-btn">演習</button>
+    <div id="output-area"></div>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+    // 出力先のエレメント
+     var outputAreaEl = document.getElementById('output-area');
+     
+     // 送信ボタンを押されたときのイベント
+     document.getElementById('sendEx-btn').addEventListener('click', function(){
+        // 値の取得
+        var val = document.getElementById('input-text').value;
+        if(val){
+            ajax(val);
+        }
+     }, false);
+
+    var ajax = function(aValue){
+        $.ajax({
+            url: 'http://tkd55.net:8888/ex',
+            type: 'GET',
+            dataType: 'json',
+            data: {name: aValue}
+        })
+        .done(function(res){
+            console.log(res);
+            // キャラクターの表示
+            showOutput(res.character[0]);
+        })
+        .fail(function(){
+            console.log('失敗');
+        });
+    };
+
+    var showOutput = function(aCharacter){
+        var img = aCharacter.img;
+        var imgEl = document.createElement('img');
+        imgEl.setAttribute('src', img);
+        // 画像の表示
+        outputAreaEl.appendChild(imgEl);
+    };
+
+    </script>
+</body>
+</html>

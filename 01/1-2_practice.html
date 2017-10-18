@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ex1-0</title>
+</head>
+<body>
+    <h2>問題 : ユーザーデータを追加し、出力してください。</h2>
+    <br>
+
+    名前 : <input type="text" name="name" value="" id="js_name"><br>
+    年齢 : <input type="text" name="name" value="" id="js_age"><br>
+    メッセージ : <input type="text" name="name" value="" id="js_msg"><br>
+    <button type="button" name="button" id="add-btn">追加</button>
+    <button type="button" name="button" id="show-btn">表示</button>
+
+    <div id="main"></div>
+    
+    
+    
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function(){
+    var list = [];
+    // 追加ボタンの処理
+    document.getElementById('add-btn').addEventListener('click', function(){
+        var obj = {};
+        obj.name = document.getElementById('js_name').value;
+        obj.age = document.getElementById('js_age').value;
+        obj.msg = document.getElementById('js_msg').value;
+        list.push(obj);
+        console.log(list);
+    }, false);
+    
+    
+    document.getElementById('show-btn').addEventListener('click', function(evt){
+        // console.log(evt); // イベントを発火した要素の情報
+        var str = '';
+        for(var cnt=0, len=list.length; cnt<len; cnt++){
+            str +=  list[cnt].name
+                    + '(' + list[cnt].age + ')があいさつ「'
+                    + list[cnt].msg + '」<br>'
+        }
+        
+        document.getElementById('main').innerHTML = str;
+    }, false);
+});
+
+</script>
+</body>
+</html>

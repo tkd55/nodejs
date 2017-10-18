@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    
+    <button type="button" name="button" id="btn">全体に送信</button>
+    <br>
+    <br>
+    <button type="button" name="button" id="join-btn">ルームAに入る</button>
+    <button type="button" name="button" id="room-btn">ルームAに送信</button>
+    <button type="button" name="button" id="leave-btn">ルームAから出る</button>
+  
+  
+    <div id="output-area"></div>
+  
+  
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="javascripts/main.js">
+    </script>
+  </body>
+</html>

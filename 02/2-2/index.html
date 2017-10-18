@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>静的ファイルの配信</title>
+</head>
+<body>
+    <form method="POST" action="http://localhost:3000">
+        <div>名前：<input type="text" name="name"></div>
+
+        <input type="radio" name="gender" value="男"> 男性
+        <input type="radio" name="gender" value="女"> 女性
+        
+        <div> 好きな食べ物
+            <br>
+            <input type="checkbox" name="food" value="おにぎり"> おにぎり
+            <input type="checkbox" name="food" value="サンドイッチ"> サンドイッチ
+            <input type="checkbox" name="food" value="ナポリタン"> ナポリタン
+            <br>
+            <input type="checkbox" name="food" value="グラタン"> グラタン
+            <input type="checkbox" name="food" value="ハンバーガー"> ハンバーガー
+        </div>
+        
+        <br>
+        <input type="submit" value="送信">
+    </form>
+</body>
+</html>

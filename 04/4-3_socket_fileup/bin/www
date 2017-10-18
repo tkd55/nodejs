@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+var debug = require('debug')('socket');
+var app = require('../app');
+var fs = require('fs');
+
+app.set('port', process.env.PORT || 3000);
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+
+
+var io = require('socket.io').listen(server);
+io.sockets.on('connection', function (socket) {
+
+    // send メソッドは message イベントと同じ動作をするよ
+    // socket.send('Hi!!');
+    // socket.emit('message', 'Hi!!');
+
+    socket.on('clientToServerText', function(msg){
+        console.log(typeof(msg));
+        console.log(msg);
+    });
+    
+    // オブジェクトの受信
+    socket.on('clientToServerObj', function(msg){
+        console.log(msg);
+        console.log(msg.name);
+        console.log(msg.age);
+    });
+    
+    // バイナリの受信
+    socket.on('clientToServerImage', function(aData){
+        var writeStream = fs.createWriteStream('./public/images/test.jpg');
+        writeStream.write(aData.contents, 'binary', function(){
+            console.log('完了!');
+            // finish イベントを発火させる
+            writeStream.end();
+        });
+
+        writeStream.on('finish', function(){
+            console.log('finish!!');
+        });
+    });
+});
+
+

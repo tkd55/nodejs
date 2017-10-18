@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+    // 関数
+
+    // 関数宣言
+    // showName();
+    function showName(){
+        console.log('T.Takeda');
+    }
+    showName();
+
+    // 関数式
+    // console.log(showName2);     // undefined
+    // showName2();                // エラーになる
+    var showName2 = function(){
+        console.log('T.Takeda');
+    };
+    console.log(showName2);
+    console.log(typeof showName2);
+    showName2();
+
+
+    function calc(a, b, c, callback){
+        console.log(callback);
+        var ans = a + b;
+        var ans2 = a + c;
+        callback(ans2);
+        // console.log(ans);
+        return ans;
+    }
+
+    // calc関数を実行
+    var ans = calc(3, 5, 6, (answer) => {
+        console.log(answer);
+    });
+    console.log(ans);
+
+
+//-------------------------------------------------
+
+
+    // スコープ : 変数の有効範囲
+    // ローカル変数 : 関数の中でのみ有効な変数
+    // グローバル変数 : プログラム全体で有効な変数
+    var gtxt = 'よろしくお願いします！';
+    function showText(){
+        var txt = 'はじめまして';
+        console.log(txt);
+        console.log(gtxt);        // グローバル変数なので参照できる
+    }
+    // console.log(txt);  // txtはローカル変数なのでエラーになる
+    console.log(gtxt);
+    showText();
+
+
+    var greeting = 'こんばんは';
+
+    function showGreeting(){
+
+        // var greeting;        // 巻き上げられてる
+        console.log(greeting);
+
+        greeting = 'おはよう';
+        console.log(greeting);
+
+        var greeting = 'こんにちは';
+        console.log(greeting);
+
+    }
+
+    showGreeting();
+    console.log(greeting);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>コメント一覧</h1>
+    <% for(var cnt=0; cnt<comments.length; cnt++){ %>
+        <div>
+            <p><%= comments[cnt].comment %></p>
+            <p><span>氏名 : <%= comments[cnt].name %></span></p>
+        </div>
+    <% } %>
+</body>
+</html>

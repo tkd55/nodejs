@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="">新規追加</div>
+    <form action="/" method="post">
+        <input type="text" placeholder="お名前", name="name">
+        <input type="text", placeholder="年齢", name="age">
+        <input type="text", placeholder="性別", name="gender">
+        <input type="submit" value="登録">
+    </form>
+
+    <div class="">検索</div>
+    <form action="/" method="get">
+        <input type="text", placeholder="検索内容", name="name">
+        <input type="submit" value="検索">
+    </form>
+    
+    <div class="">更新</div>
+    <form action="/update/hoge/" method="POST">
+        <input type="text" placeholder="お名前", name="name">
+        <input type="text", placeholder="年齢", name="age">
+        <input type="submit" value="年齢更新">
+    </form>
+    
+    <br>
+    <br>
+    <div class="">
+        <% if(result){ %>
+        <%= result.name %>さんは<%= result.age%>歳です。
+        <% } else { %>
+        検索結果はありません。
+        <% } %>
+    </div>
+    
+  </body>
+</html>

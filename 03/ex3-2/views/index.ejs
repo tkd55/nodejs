@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <form class="" action="/confirm" method="post">
+        <div class="">名前</div>
+        <input type="text" name="name" value="">
+        <div class="">E-mail</div>
+        <input type="email" name="email" value="">
+        <div class="">コメント</div>
+        <textarea name="comment" rows="8" cols="40"></textarea>
+        <br>
+        <input type="submit" value="送信">
+        <% if(expressFlash){ %>
+            <p>
+                <strong>エラーメッセージ:</strong><%= expressFlash %>
+            </p>
+        <% } %>
+    </form>
+  </body>
+</html>

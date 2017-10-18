@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <% if(title){ %>
+        <h1><%= title %></h1>
+        <p>Welcome to <%= title %></p>
+    <% } %>
+    <p>あなたは<%= counter %>番目の訪問者です。</p>
+    
+    <% console.log(list)%>
+    <ul>
+        <% for(var cnt=0; cnt<list.length; cnt++){ %>
+            <li><%= list[cnt] %></li>
+        <% } %>
+    </ul>
+  </body>
+</html>

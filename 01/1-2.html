@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <button type="button" name="button" id="btn1">ボタン1</button>
+    <button type="button" name="button" id="btn2">ボタン2</button>
+    <br>
+    <input type="text" name="name" value="" id="input-text">
+    <button type="button" name="button" id="add-btn">追加</button>
+
+    <div id="area"></div>
+
+<script type="text/javascript">
+
+    // DOMの準備が完了イベントを登録
+    // jQuery
+    // $(function(){
+    //
+    // });
+    document.addEventListener('DOMContentLoaded', () => {
+        // ES5での書き方
+        const btn1 = document.getElementById('btn1');
+        btn1.addEventListener('click', function (evt) {
+            console.log(this);
+        }, false);
+
+
+        // ES6の書き方（アロー演算子を使用した場合）
+        // ボタンの要素を取得
+        const btnEl2 = document.getElementById('btn2');
+        console.log(this);
+        // 取得した要素にクリックイベントを設定
+        btnEl2.addEventListener('click', (evt) => {
+            console.log('クリックされたよ！');
+
+            console.log(this);            // windowオブジェクトになる！
+            // 従来どおりボタンのエレメントがほしい場合は次のようにする！
+            console.log(evt.currentTarget);
+
+            // divを作成
+            let addEl = document.createElement('div');
+            // 作成したdivに文字を設定
+            addEl.textContent = 'ほげふが';
+
+            // 追加する要素を取得
+            let areaEl = document.getElementById('area');
+            // 子要素に追加
+            areaEl.appendChild(addEl);
+
+        }, false);
+
+        // 空の配列を用意
+        let array = [];
+        const addBtn = document.getElementById('add-btn');
+        addBtn.addEventListener('click', (evt) => {
+            let inputEl = document.getElementById('input-text');
+            // input要素に入力された文字を取得
+            let txt = inputEl.value;
+            console.log(txt);
+
+            // 入力された文字を配列に追加
+            array.push(txt);
+
+            console.log(array);
+
+        }, false);
+    });
+
+
+    //------------------------------------------------------
+    // 便利関数
+    //------------------------------------------------------
+    let numbers = [1, 2, 3, 4];
+    var squared = numbers.map(function (value, index) {
+        return value * value;
+    });
+    console.log(squared);
+
+
+    var squared = numbers.map((value, index) => value * value);
+    console.log(squared);
+
+
+    //--------------------------------------------------------
+    //
+    //--------------------------------------------------------
+    var Counter = function () {
+        this.count = 0;
+        var self = this;
+
+        setInterval(function () {
+            self.count++;
+        }, 1000);
+
+        this.getInterval = function () {
+            return self.count;
+        }
+    }
+
+    var c = new Counter();
+    setTimeout(function () {
+        console.log(c.getInterval());
+    }, 5000);
+
+</script>
+</body>
+</html>

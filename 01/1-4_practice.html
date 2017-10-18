@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="show"></div>
+
+    <script type="text/javascript">
+        var showEl;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showEl = document.getElementById('show');
+            // すぐに表示したので１度実行する
+            showClock();
+
+            // あとは1秒ごとに実行
+            setInterval(() => {
+                showClock();
+            }, 1000)
+        });
+
+        var showClock = function(){
+            // 日付
+            var today = new Date();
+            // 年
+            var y = today.getFullYear();
+            // 月
+            var m = today.getMonth() + 1;
+            // 日
+            var d = today.getDate();
+            // 時
+            var h = today.getHours();
+            // 分
+            var min = today.getMinutes();
+            // 秒
+            var sec = today.getSeconds();
+
+            var now = y + '年' + m + '月' + d + '日' + h + '時' + m + '分' + sec + '秒';
+            console.log(now);
+            showEl.innerHTML = now;
+        }
+
+    </script>
+</body>
+</html>

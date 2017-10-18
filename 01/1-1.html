@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+// 変数宣言
+var name;
+
+// データ型
+// String / Number / Boolean / Null / undefined（未定義）
+// 配列 / オブジェクト / 関数
+
+var name = 'Takeda';
+var age = 36;
+var bool = true;
+
+// 配列
+var array = ['りんご', 'ごりら', 'らっぱ'];
+// オブジェクト
+var obj = {
+    name: 'Takeda',
+    age: 36
+};
+
+// 配列の参照の仕方
+console.log(array[0]);    // りんご
+console.log(array[1]);    // ごりら
+console.log(array[2]);    // らっぱ
+console.log(array[3]);    // undefined
+
+// オブジェクトの参照
+console.log(obj.name);    // Takeda
+console.log(obj.age);     // 36
+
+// データ型の判定
+console.log(typeof obj.name);        // string
+console.log(typeof obj.age);         // number
+
+
+//-------------------------------------
+
+// 変数宣言
+
+//----------------------------
+// let命令 => ブロックスコープ
+//----------------------------
+// varでの宣言との違い
+
+// その1 : スコープ（変数の有効範囲）がブロック
+if(true){
+//    var hoge = 'Takeda';
+    let hoge = 'letでの宣言だよ';
+}
+
+//console.log(hoge);    // エラーになる（not defined）
+
+// その2 : 同じ変数名を宣言できない。
+//var fuga = 'fuga';
+//var fuga = 'fugafuga';
+//
+//console.log(fuga);
+
+//let fugafuga = 'fugafuga';
+//let fugafuga = 'hogehoge';    // すでに宣言済みのためエラーになる
+
+
+
+//---------------------------
+// consot命令 => 定数宣言
+//---------------------------
+const data = 100;
+//data = 50;  // 再代入できないためエラーになる
+
+
+// 注意
+const users = ['Takeda', 'Iwamoto', 'Furuya'];
+users[0] = 'matsumura';
+console.log(users);
+
+//const numbers = [1, 2, 3];
+//numbers = [4, 5, 6];        // 再代入できないためエラーになる
+
+//--------------------------------------
+
+// 四則演算
+var add = 1 + 3;
+console.log(add);
+
+var ans = 3 - 2;
+console.log(ans);
+
+var ans2 = 3 * 5;
+console.log(ans2);
+
+var ans3 = 10 / 3;
+console.log(ans3);
+
+// % : 余りを求める演算子
+var ans4 = 10 % 3;
+console.log(ans4);
+
+//---------------------------
+
+//-------------------
+// 文字列の連結
+//-------------------
+var fullName = 'Takeda' + ' Tomomichi';
+console.log(fullName);
+
+var ans5 = '1' + 1;
+console.log(ans5);           // 11
+console.log(typeof ans5);    // string
+
+
+//-------------------
+// テンプレート文字列
+//-------------------
+let str1 = `Hello
+world`;
+console.log(str1);
+
+
+var myName = 'T.Takeda';
+console.log('私の名前は' + myName + 'です');
+
+console.log(`私の名前は${myName}です`);
+
+
+
+
+//-------------------------------------------------
+// Symbol（たぶんやらない）
+//-------------------------------------------------
+const JAVASCRIPT = Symbol();
+const JAVASCRIPT2 = Symbol();
+console.log(JAVASCRIPT);
+console.log(JAVASCRIPT2);
+console.log(JAVASCRIPT === JAVASCRIPT2);
+
+// シンボルはオブジェクトのプロパティキーとして使用できる
+let language = {};
+language[JAVASCRIPT] = 'JavaScript';
+console.log(language[JAVASCRIPT]);
+
+
+
+//---------------------------------------------------------------------
+// 分割代入
+//---------------------------------------------------------------------
+
+// 分割代入なし
+// var list = ['Takeda', 'Iwamoto', 'Furuya'];
+// var main = list[0];
+// var sub1 = list[1];
+// var sub2 = list[2];
+
+//let [main, sub1, sub2] = ['Takeda', 'Iwamoto', 'Furuya'];
+//console.log(sub1);
+
+let {main, sub1, sub2} =  {main: 'Takeda', sub1: 'Iwamoto', sub2: 'Furuya'};
+console.log(sub2);
+
+
+//---------------------------------------------------------------------
+// その他
+//---------------------------------------------------------------------
+let title = 'タイトル';
+let price = 3000;
+
+// let list = {title: title, price: price};
+// console.log(list);
+
+let list = {title, price};
+console.log(list);
+
+
+//=============================================================================================
+
+//---------------------------
+// 制御構造
+
+// if文
+// 偽 : false / NaN / 0 / null / "" or ''（空文字） / undefined
+// 真 : 偽以外のもの
+
+var anyFlg = false;
+if(anyFlg){
+    console.log('こんにちは');
+}
+
+// !: 否定演算子
+if(!anyFlg){
+    console.log('おはよう');
+}
+
+
+var num = '1';
+// == : 等価演算子
+// !=
+if(num == 1){
+    console.log('数値の1と文字の1は同じと判定される');
+}
+
+// === : 厳密な等価演算子（データ型の判定もする）
+// !==
+if(num !== 1){
+    console.log('数値の1と文字の1はではない');
+}
+
+
+//--------------------------------------------------
+
+// for文
+var week = ['Mon', 'The', 'Wed', 'Thu', 'Fri'];
+// console.log(week[0]);
+// console.log(week[1]);
+// console.log(week[2]);
+// console.log(week[3]);
+// console.log(week[4]);
+
+// 配列の要素数 : 配列の変数名.length
+for(var i=0, len=week.length; i<len; i++){
+    console.log(week[i]);
+}
+
+var obj = {
+    main: 'Takeda',
+    sub: 'Furuya',
+    student: 'Tachibana'
+};
+
+// オブジェクトは↓のようにも参照できる
+console.log(obj['main'])
+
+for(var prop in obj){
+    // console.log(prop);
+    console.log(obj[prop]);
+}
+
+for(var prop in week){
+    console.log(week[prop]);
+}
+
+week.forEach(function(value, index){
+    console.log('index: ' + index + ' = ' + value);
+});
+
+</script>
+</body>
+</html>
