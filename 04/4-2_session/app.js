@@ -27,8 +27,15 @@ app.use(cookieParser());
 // sessionの仕様を設定
 app.use(session({
     secret: process.env.SESSION_SECRET || 'session secret',
-    resave: false,
-    saveUninitialized: false,
+    // 推奨項目（セッション内容に変更がない場合にも保存する場合にはtrue）
+    // resave: false,
+    // 推奨項目（新規にセッションを生成して何も代入されていなくても値を入れる場合にはtrue）
+    // saveUninitialized: false,
+    // アクセスの度に、有効期限を伸ばす場合にはtrue
+    rolling : true,
+    // クッキー名（デフォルトでは「connect.sid」）
+    // name : 'my-special-site-cookie',
+    // デフォルトは「{ path: '/', httpOnly: true, secure: false, maxAge: null }」
     cookie: {
         httpOnly: false,
         maxAge: 1000 * 60 * 60      // １時間
