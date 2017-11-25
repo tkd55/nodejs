@@ -14,47 +14,53 @@
     各パラメータで取得したものを表示してください。<br>
     <br>
     <input type="text" id="input-text">
-    <button id="sendEx-btn">演習</button>
+    <button id="send-btn">演習</button>
     <div id="output-area"></div>
 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script type="text/javascript">
 
     // 出力先のエレメント
-     var outputAreaEl = document.getElementById('output-area');
+    let outputAreaEl = $('#output-area');
      
      // 送信ボタンを押されたときのイベント
-     document.getElementById('sendEx-btn').addEventListener('click', function(){
+    $('#send-btn').on('click', () => {
         // 値の取得
-        var val = document.getElementById('input-text').value;
+        let val = $('#input-text').val();
         if(val){
+            // データをサーバーに送信
             ajax(val);
         }
-     }, false);
+    });
 
-    var ajax = function(aValue){
+    let ajax = (aValue) => {
         $.ajax({
             url: 'http://tkd55.net:8888/ex',
             type: 'GET',
             dataType: 'json',
             data: {name: aValue}
         })
-        .done(function(res){
+        .done((res) => {
             console.log(res);
             // キャラクターの表示
             showOutput(res.character[0]);
         })
-        .fail(function(){
+        .fail(() => {
             console.log('失敗');
         });
     };
 
-    var showOutput = function(aCharacter){
-        var img = aCharacter.img;
-        var imgEl = document.createElement('img');
-        imgEl.setAttribute('src', img);
-        // 画像の表示
-        outputAreaEl.appendChild(imgEl);
+    let showOutput = function(aCharacter){
+        // imgタグを作成
+        let imgEl = $('<img>').attr({'src', aCharacter.img});
+        // 表示するエリアに追加
+        outputAreaEl.append(imgEl);
+        
+        // var img = aCharacter.img;
+        // var imgEl = document.createElement('img');
+        // imgEl.setAttribute('src', img);
+        // // 画像の表示
+        // outputAreaEl.appendChild(imgEl);
     };
 
     </script>

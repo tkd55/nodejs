@@ -7,10 +7,10 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    
+
     <form class="" action="/" method="post">
-        <input type="text" name="name" value="" placeholder="お名前">
-        <input type="text" name="age" value="" placeholder="年齢">
+        名前 : <input type="text" name="name" value="" placeholder="お名前"><br>
+        年齢 : <input type="text" name="age" value="" placeholder="年齢"><br>
         <input type="submit" value="登録">
     </form>
     <br>
@@ -19,9 +19,9 @@
         <input type="text" name="name" value="" placeholder="お名前">
         <input type="submit" value="検索">
     </form>
-    
+
     <% if(result){%>
-        <div class=""><%= result.name %>さんは<%= result.age %> 歳です</div>        
+        <div class=""><%= result.name %>さんは<%= result.age %> 歳です</div>
     <% } %>
   </body>
 </html>

@@ -26,8 +26,8 @@ router.post('/', (req, res) => {
     orange.price = 200 * req.session.orange;
 
     var total = apple.price + banana.price + orange.price;
-    // res.render('confirm', { apple: apple, banana: banana, orange: orange, total: total});
-    res.render('confirm', {apple, banana, banana, total});
+    res.render('confirm', { apple: apple, banana: banana, orange: orange, total: total});
+    // res.render('confirm', {apple, banana, banana, total});
 
 });
 

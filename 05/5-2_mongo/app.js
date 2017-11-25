@@ -10,16 +10,6 @@ var users = require('./routes/users');
 
 var mongoose = require('mongoose');
 
-// 定義
-var Schema = mongoose.Schema;
-var UserSchema = new Schema({
-    name: {type: String, index: {unique: true}},
-    age: {type: Number},
-    createTime: {type: Date, default: Date.now}
-});
-mongoose.model('UserSchema', UserSchema);
-
-
 var app = express();
 
 // view engine setup

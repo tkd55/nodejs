@@ -32,20 +32,27 @@
         });
 
         $('#send-img').on('click', function(evt){
-
             var fileReader = new FileReader();
             fileReader.readAsBinaryString(selectedFile);
 
             fileReader.addEventListener('load', function(evt){
-                console.log(evt.target.result);
+                // console.log(evt.target.result);
                 var data = {};
                 data.name = 'hogehoge.jpg';
                 data.contents = evt.target.result;
                 socket.emit('clientToServerImage', data);
             });
-
-
         });
+
+        let outputEl = document.getElementById('output-area');
+        socket.on('uploadedImage', function(path) {
+            console.log(path);
+            let imgEl = document.createElement('img');
+            imgEl.setAttribute('src', path);
+
+            outputEl.appendChild(imgEl);
+        });
+
     });
 
 

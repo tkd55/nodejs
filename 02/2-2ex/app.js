@@ -1,7 +1,12 @@
 const http = require('http');
+const server = http.createServer();
 const qs = require('querystring');        // 追加
 const path = require('path');
 const fs = require('fs');
+
+server.listen(3000, '127.0.0.1', () => {
+    console.log('Start!!!');
+});
 
 const createResponseData = () => {
     // Math.random() : 0 〜 0.999999999999
@@ -29,8 +34,8 @@ const createResponseData = () => {
     return result;
 };
 
-http.createServer((req, res) => {
-
+server.on('request', (req, res) => {
+    
     if( req.method === 'GET' ){
         // エラーが第一引数になる！
         fs.readFile('index.html', (err, data) => {
@@ -58,10 +63,8 @@ http.createServer((req, res) => {
             const ret = createResponseData();
             // レスポンス
             const data = `<h2>${param.name}さんの今日の運勢は${ret}です</h2>`;
-            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
             res.end(data);
         });
     }
-
-}).listen(3000);
-
+});

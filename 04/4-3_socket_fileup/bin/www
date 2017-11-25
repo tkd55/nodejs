@@ -20,25 +20,29 @@ io.sockets.on('connection', function (socket) {
         console.log(typeof(msg));
         console.log(msg);
     });
-    
+
     // オブジェクトの受信
     socket.on('clientToServerObj', function(msg){
         console.log(msg);
         console.log(msg.name);
         console.log(msg.age);
     });
-    
+
     // バイナリの受信
-    socket.on('clientToServerImage', function(aData){
-        var writeStream = fs.createWriteStream('./public/images/test.jpg');
-        writeStream.write(aData.contents, 'binary', function(){
+    socket.on('clientToServerImage', (aData) => {
+        let date = new Date();
+        let fileName = date.getTime();
+        let filePath = `images/${fileName}.jpg`;
+        var writeStream = fs.createWriteStream(`./public/${filePath}`);
+        writeStream.write(aData.contents, 'binary', () => {
             console.log('完了!');
             // finish イベントを発火させる
             writeStream.end();
         });
 
-        writeStream.on('finish', function(){
+        writeStream.on('finish', () => {
             console.log('finish!!');
+            socket.emit('uploadedImage', filePath);
         });
     });
 });

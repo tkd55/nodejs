@@ -1,10 +1,23 @@
 'use strict'
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+
+// 定義
+var UserSchema = new mongoose.Schema({
+    name: {type: String, index: {unique: true}},
+    age: {type: Number},
+    createTime: {type: Date, default: Date.now}
+});
+mongoose.model('UserSchema', UserSchema);
 
 // mongoDBへの接続処理
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/sample2', (err) => {
+var db = mongoose.createConnection();
+db.openUri('mongodb://localhost/sample2');
+
+
+mongoose.createConnection('mongodb://localhost/sample2', (err) => {
     if(err){
         console.log('DB Connection Failed : ' + err);
     }
@@ -35,7 +48,7 @@ router.post('/', (req, res, next) => {
     var userData = new UserData();
     userData.name  = req.body.name;
     userData.age  = req.body.age;
-    
+
     // データの保存の処理
     userData.save((err) => {
         if(err){
