@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form class="" action="/" method="post">
+        名前 : <input type="text" name="name" value="" placeholder="お名前"><br>
+        年齢 : <input type="text" name="age" value="" placeholder="年齢"><br>
+        <input type="submit" value="登録">
+    </form>
+    <br>
+    <br>
+    <p>配列の2個を更新</p>
+    <form class="" action="/update" method="post">
+      email : <input type="text" name="email" value="" placeholder="Email"><br>
+      <input type="submit" value="更新">
+    </form>
+    <br>
+    <br>
+    <form class="" action="/" method="get">
+        <input type="text" name="name" value="" placeholder="お名前">
+        <input type="submit" value="検索">
+    </form>
+
+    <% if(result){%>
+        <div class=""><%= result.name %>さんは<%= result.age %> 歳です</div>
+    <% } %>
+  </body>
+</html>
